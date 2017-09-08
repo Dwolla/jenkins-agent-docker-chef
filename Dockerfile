@@ -20,7 +20,7 @@ RUN apk add --update \
       ruby-dev \
       build-base \
       perl \
-      libffi-dev \ 
+      libffi-dev \
       git && \
     gem install --no-ri --no-rdoc \
       io-console \
@@ -28,6 +28,8 @@ RUN apk add --update \
       bundler \
       rake \
       aws-sdk-core \
+      aws-sdk-s3 \
+      aws-sdk-ec2 \
       berkshelf && \
     apk del \
       libffi-dev \
