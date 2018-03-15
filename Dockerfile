@@ -1,5 +1,5 @@
-FROM dwolla/jenkins-agent-awscli
-MAINTAINER Dwolla Dev <dev+jenkins-aws-tools@dwolla.com>
+FROM dwolla/jenkins-agent-nvm
+MAINTAINER Dwolla Dev <dev+jenkins-chef-tools@dwolla.com>
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -8,33 +8,20 @@ ARG VERSION
 
 LABEL \
     org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name="dwolla/jenkins-agent-awscli Dockerfile" \
+    org.label-schema.name="dwolla/jenkins-agent-chef Dockerfile" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.vcs-ref="${VCS_REF}" \
     org.label-schema.vcs-url="${VCS_URL}" \
     org.label-schema.version="${VERSION}"
 
 USER root
-RUN apk add --update \
-      ruby \
-      ruby-dev \
-      build-base \
-      perl \
-      libffi-dev \
-      git && \
-    gem install --no-ri --no-rdoc \
-      io-console \
-      mixlib-shellout \
-      bundler \
-      rake \
-      aws-sdk-core \
-      aws-sdk-s3 \
-      aws-sdk-ec2 \
-      berkshelf && \
-    apk del \
-      libffi-dev \
-      perl \
-      build-base && \
-    rm -rf /var/cache/apk/*
+
+ENV CHEFDK_VERSION=1.6.11
+
+RUN apt-get install -y \
+        ruby && \
+    curl -O https://packages.chef.io/files/stable/chefdk/${CHEFDK_VERSION}/ubuntu/16.04/chefdk_${CHEFDK_VERSION}-1_amd64.deb && \
+    dpkg -i chefdk_${CHEFDK_VERSION}-1_amd64.deb && \
+    rm -rf chefdk_${CHEFDK_VERSION}-1_amd64.deb
 
 USER jenkins
