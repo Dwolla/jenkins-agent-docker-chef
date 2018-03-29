@@ -1,4 +1,4 @@
-FROM dwolla/jenkins-agent-nvm
+FROM dwolla/jenkins-agent-core:debian
 MAINTAINER Dwolla Dev <dev+jenkins-chef-tools@dwolla.com>
 
 ARG BUILD_DATE
@@ -7,6 +7,7 @@ ARG VCS_URL
 ARG VERSION
 
 LABEL \
+    maintainer="Dwolla Dev <dev+jenkins-chef-tools@dwolla.com>" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="dwolla/jenkins-agent-chef Dockerfile" \
     org.label-schema.schema-version="1.0" \
