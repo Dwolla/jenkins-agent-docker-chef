@@ -20,7 +20,9 @@ USER root
 ENV CHEFDK_VERSION=3.0.36
 
 RUN apt-get install -y \
-        ruby && \
+      ruby \
+      ruby-dev && \
+    gem install bundler && \
     curl -O https://packages.chef.io/files/stable/chefdk/${CHEFDK_VERSION}/ubuntu/16.04/chefdk_${CHEFDK_VERSION}-1_amd64.deb && \
     dpkg -i chefdk_${CHEFDK_VERSION}-1_amd64.deb && \
     rm -rf chefdk_${CHEFDK_VERSION}-1_amd64.deb
