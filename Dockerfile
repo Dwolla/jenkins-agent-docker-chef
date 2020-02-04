@@ -17,7 +17,7 @@ LABEL \
 
 USER root
 
-ENV CHEFDK_VERSION=3.12.10
+ENV CHEFDK_VERSION=3.13.1
 
 RUN apt-get install -y \
     ruby \
