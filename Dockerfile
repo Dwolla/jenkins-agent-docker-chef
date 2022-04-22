@@ -1,5 +1,6 @@
-FROM dwolla/jenkins-agent-core:debian
-MAINTAINER Dwolla Dev <dev+jenkins-chef-tools@dwolla.com>
+ARG CORE_TAG
+
+FROM dwolla/jenkins-agent-core:${CORE_TAG}
 
 ARG BUILD_DATE
 ARG VCS_REF
