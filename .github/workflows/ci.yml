@@ -8,7 +8,7 @@ on:
     tags: [v*]
 
 env:
-  core_tag: sha-d3e1fed-11.0.14.1_1-jdk
+  core_tag: 4.13.2-1-jdk11-7b03219
 
 jobs:
   build:
