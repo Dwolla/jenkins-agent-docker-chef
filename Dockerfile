@@ -18,14 +18,14 @@ LABEL \
 
 USER root
 
-ENV CHEFDK_VERSION=3.13.1
+ENV CINC_WORKSTATION_VERSION=22.6.973
 
 RUN apt-get install -y \
     ruby \
     ruby-dev && \
     gem install bundler && \
-    curl -O https://packages.chef.io/files/stable/chefdk/${CHEFDK_VERSION}/debian/9/chefdk_${CHEFDK_VERSION}-1_amd64.deb && \
-    dpkg -i chefdk_${CHEFDK_VERSION}-1_amd64.deb && \
-    rm -rf chefdk_${CHEFDK_VERSION}-1_amd64.deb
+    curl -O http://downloads.cinc.sh/files/stable/cinc-workstation/${CINC_WORKSTATION_VERSION}/debian/9/cinc-workstation_${CINC_WORKSTATION_VERSION}-1_amd64.deb && \
+    dpkg -i cinc-workstation_${CINC_WORKSTATION_VERSION}-1_amd64.deb && \
+    rm -rf cinc-workstation_${CINC_WORKSTATION_VERSION}-1_amd64.deb
 
 USER jenkins
